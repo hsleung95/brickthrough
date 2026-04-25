@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ck83jqdu2xlia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbx31"]
+radius = 12.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
+
+[node name="Ball" type="RigidBody2D" unique_id=5784006]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123247601]
+position = Vector2(13, 12)
+shape = SubResource("CircleShape2D_cbx31")
+debug_color = Color(0.8903827, 0.1718834, 0, 0.41960785)
+
+[node name="Sprite2D" type="MeshInstance2D" parent="." unique_id=1669309768]
+position = Vector2(13, 12.000003)
+scale = Vector2(25.528349, 24.000004)
+mesh = SubResource("SphereMesh_cbx31")

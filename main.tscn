@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bt2evyic4ajse"]
 
+[ext_resource type="Script" uid="uid://ch2gsynkvki4" path="res://scripts/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b23i2xolx8j4h" path="res://paddle.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://ball.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node" unique_id=1037638979]
+script = ExtResource("1_h2yge")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1362906488]
 anchors_preset = 15
@@ -14,3 +17,6 @@ color = Color(0, 0, 1, 1)
 
 [node name="Paddle" parent="." unique_id=1343040502 instance=ExtResource("1_ig7tw")]
 position = Vector2(301, 446)
+
+[node name="Ball" parent="." unique_id=2118105359 instance=ExtResource("2_0xm2m")]
+position = Vector2(334, 397)
