@@ -7,15 +7,13 @@ size = Vector2(101, 21)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0sbc1"]
 
-[node name="Paddle" type="Area2D" unique_id=1343040502]
+[node name="Paddle" type="RigidBody2D" unique_id=868869792]
 script = ExtResource("1_0sbc1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=893589435]
-position = Vector2(51, 11)
 shape = SubResource("RectangleShape2D_ut3sq")
 debug_color = Color(0.9607843, 0, 0, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=445990652]
-position = Vector2(50.999996, 11)
 scale = Vector2(101.99999, 22)
 texture = SubResource("CanvasTexture_0sbc1")

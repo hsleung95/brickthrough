@@ -1,23 +1,26 @@
-extends Area2D
+extends RigidBody2D
 
-var speed = 300.0
-var screen_size
 
-# Called when the node enters the scene tree for the first time.
+@export var move_speed: float = 600.0
+@export var left_limit: float = 50.0
+@export var right_limit: float = 670.0
+
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
+	lock_rotation = true
+	gravity_scale = 0.0
+	linear_damp = 0.0
+	angular_damp = 10.0
 
-func _process(delta):
-	var velocity = calVelocity()
-	position += velocity * delta
-	position = position.clamp(screen_size * 0.01, screen_size * 0.85)
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	var input_dir := Input.get_axis("move_left", "move_right")
 
-func calVelocity():
-	var velocity = Vector2.ZERO
-	if (Input.is_action_pressed("move_left")):
-		velocity.x += -1
-	elif (Input.is_action_pressed("move_right")):
-		velocity.x += 1
-	if (velocity.length() > 0):
-		velocity = velocity.normalized() * speed
-	return velocity
+	# Horizontal only
+	var v := state.linear_velocity
+	v.x = input_dir * move_speed
+	v.y = 0.0
+	state.linear_velocity = v
+
+	# Keep paddle inside arena
+	var t := state.transform
+	t.origin.x = clampf(t.origin.x, left_limit, right_limit)
+	state.transform = t

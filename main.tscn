@@ -4,6 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://b23i2xolx8j4h" path="res://paddle.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://ball.tscn" id="2_0xm2m"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h2yge"]
+a = Vector2(0, 540)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1bvp3"]
+a = Vector2(720, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lquwl"]
+a = Vector2(720, 540)
+b = Vector2(720, 0)
+
 [node name="Main" type="Node" unique_id=1037638979]
 script = ExtResource("1_h2yge")
 
@@ -16,7 +28,18 @@ grow_vertical = 2
 color = Color(0, 0, 1, 1)
 
 [node name="Paddle" parent="." unique_id=1343040502 instance=ExtResource("1_ig7tw")]
-position = Vector2(301, 446)
+position = Vector2(364, 442)
 
 [node name="Ball" parent="." unique_id=2118105359 instance=ExtResource("2_0xm2m")]
-position = Vector2(334, 397)
+position = Vector2(362, 115)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1577295810]
+
+[node name="Wall" type="CollisionShape2D" parent="Walls" unique_id=842677061]
+shape = SubResource("SegmentShape2D_h2yge")
+
+[node name="Wall2" type="CollisionShape2D" parent="Walls" unique_id=1243448466]
+shape = SubResource("SegmentShape2D_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=193701759]
+shape = SubResource("SegmentShape2D_lquwl")
