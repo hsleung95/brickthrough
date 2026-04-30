@@ -1,26 +1,21 @@
-extends RigidBody2D
+extends AnimatableBody2D
 
+signal ball_hit
 
-@export var move_speed: float = 600.0
+@export var speed: float = 600.0
 @export var left_limit: float = 50.0
 @export var right_limit: float = 670.0
 
+
 func _ready() -> void:
-	lock_rotation = true
-	gravity_scale = 0.0
-	linear_damp = 0.0
-	angular_damp = 10.0
+	$Area2D.body_entered.connect(_on_area_2d_body_entered)
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	var input_dir := Input.get_axis("move_left", "move_right")
+func _physics_process(delta: float) -> void:
+	var dir := Input.get_axis("move_left", "move_right")
+	var new_x := clampf(global_position.x + dir * speed * delta, left_limit, right_limit)
+	global_position.x = new_x
 
-	# Horizontal only
-	var v := state.linear_velocity
-	v.x = input_dir * move_speed
-	v.y = 0.0
-	state.linear_velocity = v
 
-	# Keep paddle inside arena
-	var t := state.transform
-	t.origin.x = clampf(t.origin.x, left_limit, right_limit)
-	state.transform = t
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if (body.is_in_group("Balls")):
+		ball_hit.emit()
