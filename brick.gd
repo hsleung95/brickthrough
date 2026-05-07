@@ -8,5 +8,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var collision = move_and_collide(Vector2(0,0.1))
 	if (collision):
-		print("weeee")
 		queue_free()
