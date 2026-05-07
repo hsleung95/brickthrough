@@ -8,7 +8,7 @@ signal ball_hit
 
 
 func _ready() -> void:
-	$Area2D.body_entered.connect(_on_area_2d_body_entered)
+	pass
 
 func _physics_process(delta: float) -> void:
 	var dir := Input.get_axis("move_left", "move_right")

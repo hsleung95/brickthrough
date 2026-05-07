@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ch2gsynkvki4" path="res://scripts/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b23i2xolx8j4h" path="res://paddle.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://ball.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://jk8016pg0cg1" path="res://brick.tscn" id="4_1bvp3"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_h2yge"]
 a = Vector2(0, 540)
@@ -40,5 +41,23 @@ shape = SubResource("SegmentShape2D_h2yge")
 [node name="Wall2" type="CollisionShape2D" parent="Walls" unique_id=1243448466]
 shape = SubResource("SegmentShape2D_1bvp3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=193701759]
+[node name="Wall3" type="CollisionShape2D" parent="Walls" unique_id=193701759]
 shape = SubResource("SegmentShape2D_lquwl")
+
+[node name="Brick" parent="." unique_id=1587032899 instance=ExtResource("4_1bvp3")]
+position = Vector2(86, 61)
+
+[node name="Brick2" parent="." unique_id=1875447943 instance=ExtResource("4_1bvp3")]
+position = Vector2(192, 61)
+
+[node name="Brick3" parent="." unique_id=818726100 instance=ExtResource("4_1bvp3")]
+position = Vector2(299, 61)
+
+[node name="Brick4" parent="." unique_id=1199966418 instance=ExtResource("4_1bvp3")]
+position = Vector2(405, 61)
+
+[node name="Brick5" parent="." unique_id=1945604566 instance=ExtResource("4_1bvp3")]
+position = Vector2(512, 61)
+
+[node name="Brick6" parent="." unique_id=946685676 instance=ExtResource("4_1bvp3")]
+position = Vector2(618, 61)
