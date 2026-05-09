@@ -1,11 +1,17 @@
 extends RigidBody2D
 
+signal block_destroyed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var collision = move_and_collide(Vector2(0,0.1))
-	if (collision):
-		queue_free()
+func _process(delta: float) -> void:	
+	move_and_collide(Vector2(0,0.1))
+	
+func on_hit() -> void:
+	destroy_block()	
+
+func destroy_block():
+	block_destroyed.emit()
+	queue_free()

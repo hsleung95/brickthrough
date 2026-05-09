@@ -1,7 +1,8 @@
 extends RigidBody2D
 
 var velocityY = 200
-var velocityX = 0
+var velocityX = 110
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,7 +28,9 @@ func _process(delta: float) -> void:
 			#velocityX = velocity.x + 100
 		#else:
 			#velocityX = velocity.x - 100
-
+		var collider = collision.get_collider()
+		if (collider.is_in_group("Hittable")):
+			collider.call("on_hit")
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

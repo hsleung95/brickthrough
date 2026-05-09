@@ -20,6 +20,7 @@ b = Vector2(720, 0)
 [node name="Main" type="Node" unique_id=1037638979 groups=["Balls"]]
 script = ExtResource("1_h2yge")
 ball_scene = ExtResource("2_0xm2m")
+brick_scene = ExtResource("4_1bvp3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1362906488]
 anchors_preset = 15
@@ -30,7 +31,7 @@ grow_vertical = 2
 color = Color(0, 0, 1, 1)
 
 [node name="Paddle" parent="." unique_id=1343040502 groups=["Balls"] instance=ExtResource("1_ig7tw")]
-position = Vector2(364, 442)
+position = Vector2(353, 356)
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=1577295810]
 collision_mask = 0
@@ -44,20 +45,13 @@ shape = SubResource("SegmentShape2D_1bvp3")
 [node name="Wall3" type="CollisionShape2D" parent="Walls" unique_id=193701759]
 shape = SubResource("SegmentShape2D_lquwl")
 
-[node name="Brick" parent="." unique_id=1587032899 instance=ExtResource("4_1bvp3")]
-position = Vector2(86, 61)
-
-[node name="Brick2" parent="." unique_id=1875447943 instance=ExtResource("4_1bvp3")]
-position = Vector2(192, 61)
-
-[node name="Brick3" parent="." unique_id=818726100 instance=ExtResource("4_1bvp3")]
-position = Vector2(299, 61)
-
-[node name="Brick4" parent="." unique_id=1199966418 instance=ExtResource("4_1bvp3")]
-position = Vector2(405, 61)
-
-[node name="Brick5" parent="." unique_id=1945604566 instance=ExtResource("4_1bvp3")]
-position = Vector2(512, 61)
-
-[node name="Brick6" parent="." unique_id=946685676 instance=ExtResource("4_1bvp3")]
-position = Vector2(618, 61)
+[node name="Score" type="Label" parent="." unique_id=686002272]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "0"
