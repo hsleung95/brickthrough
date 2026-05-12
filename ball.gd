@@ -1,8 +1,9 @@
 extends RigidBody2D
 
-var velocityY = 200
-var velocityX = 110
+var velocityY = 300
+var velocityX = 150
 
+signal ball_removed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,17 +21,10 @@ func _process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal())
 		velocityX = velocity.x
 		velocityY = velocity.y
-		#if (velocity.y > 0):
-			#velocityY = velocity.y + 100
-		#else:
-			#velocityY = velocity.y - 100
-		#if (velocity.x > 0):
-			#velocityX = velocity.x + 100
-		#else:
-			#velocityX = velocity.x - 100
 		var collider = collision.get_collider()
 		if (collider.is_in_group("Hittable")):
 			collider.call("on_hit")
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	ball_removed.emit()
 	queue_free()
