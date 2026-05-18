@@ -7,7 +7,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:	
-	move_and_collide(Vector2(0,0.5))
+	move_and_collide(Vector2(0,0.25))
 	
 func on_hit() -> void:
 	destroy_block()	

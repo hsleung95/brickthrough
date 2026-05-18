@@ -2,7 +2,7 @@ extends AnimatableBody2D
 
 signal ball_hit
 
-@export var speed: float = 600.0
+@export var speed: float = 500.0
 @export var left_limit: float = 50.0
 @export var right_limit: float = 670.0
 

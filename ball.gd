@@ -8,7 +8,7 @@ signal ball_removed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	velocity = Vector2(150.0, 300.0)
+	velocity = Vector2(100.0, 150.0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
