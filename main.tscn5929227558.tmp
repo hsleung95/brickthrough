@@ -4,22 +4,26 @@
 [ext_resource type="PackedScene" uid="uid://b23i2xolx8j4h" path="res://paddle.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://ball.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://jk8016pg0cg1" path="res://brick.tscn" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://d256wdy5pe248" path="res://camera_2d.gd" id="4_lquwl"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h2yge"]
+a = Vector2(0, 540)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1bvp3"]
+a = Vector2(720, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lquwl"]
+a = Vector2(720, 540)
+b = Vector2(720, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(722, 120)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_1bvp3"]
 
 [node name="Main" type="Node" unique_id=1037638979]
 script = ExtResource("1_h2yge")
 ball_scene = ExtResource("2_0xm2m")
 brick_scene = ExtResource("4_1bvp3")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=965200988]
-position = Vector2(360, 272)
-zoom = Vector2(1.5, 1.5)
-script = ExtResource("4_lquwl")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1362906488]
 anchors_preset = 15
@@ -31,6 +35,18 @@ color = Color(0, 0, 1, 1)
 
 [node name="Paddle" parent="." unique_id=1343040502 instance=ExtResource("1_ig7tw")]
 position = Vector2(360, 432)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1577295810]
+collision_mask = 0
+
+[node name="Wall" type="CollisionShape2D" parent="Walls" unique_id=842677061]
+shape = SubResource("SegmentShape2D_h2yge")
+
+[node name="Wall2" type="CollisionShape2D" parent="Walls" unique_id=1243448466]
+shape = SubResource("SegmentShape2D_1bvp3")
+
+[node name="Wall3" type="CollisionShape2D" parent="Walls" unique_id=193701759]
+shape = SubResource("SegmentShape2D_lquwl")
 
 [node name="BrickTimer" type="Timer" parent="." unique_id=1043122695]
 wait_time = 10.0
@@ -44,54 +60,24 @@ collision_mask = 2
 position = Vector2(360, 484)
 shape = SubResource("RectangleShape2D_1bvp3")
 
+[node name="Camera" type="Camera2D" parent="." unique_id=269720437]
+position = Vector2(360, 272)
+zoom = Vector2(1.5, 1.5)
+
 [node name="GUI" type="CanvasLayer" parent="." unique_id=165833927]
 
-[node name="TimeLived" type="Label" parent="GUI" unique_id=1542633715]
-anchors_preset = -1
-anchor_left = 0.81100005
-anchor_right = 0.975
-anchor_bottom = 0.119
-offset_left = 0.079956055
-offset_bottom = -0.26000214
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 46
-text = "00:00"
-horizontal_alignment = 1
-
 [node name="Score" type="Label" parent="GUI" unique_id=686002272]
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0070001
-offset_left = 320.0
-offset_right = -336.0
-offset_bottom = -479.78003
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 136.0
+offset_right = 24.0
+offset_bottom = 159.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 46
 text = "0"
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BallNumber" type="Label" parent="GUI" unique_id=1161443377]
-anchors_preset = -1
-anchor_right = 0.26700002
-anchor_bottom = 0.119
-offset_right = -0.24002075
-offset_bottom = -0.26000214
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 46
-text = "Balls: 0"
-horizontal_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="GUI" unique_id=532102466]
-z_index = -1
-position = Vector2(359.99997, 31.75)
-scale = Vector2(719.99994, 64.5)
-texture = SubResource("CanvasTexture_1bvp3")
 
 [connection signal="timeout" from="BrickTimer" to="." method="_on_brick_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
