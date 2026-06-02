@@ -135,8 +135,7 @@ func updateBallNumber(newBallCount: int) -> void:
 	$GUI/BallNumber.text = "Balls: " + str(newBallCount)
 
 func handlePowerUp(powerUpType: int) -> void:
-	$Paddle.update_size(1.15)
-	spawnBall()
+
 	if (powerUpType == -2):
 		$Paddle.update_size(0.85)
 	elif (powerUpType == -1):
