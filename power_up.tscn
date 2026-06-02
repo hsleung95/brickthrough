@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c6rwnk1vlewlp"]
+
+[ext_resource type="Script" uid="uid://bmjlox07w1xpt" path="res://power_up.gd" id="2_mkoic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fad3"]
+size = Vector2(16, 16)
+
+[node name="PowerUp" type="RigidBody2D" unique_id=1427646909 groups=["PowerUps"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_mkoic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446857628]
+shape = SubResource("RectangleShape2D_7fad3")
+debug_color = Color(0, 0.640254, 0.35733178, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1118184358]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=405236151]
+rect = Rect2(-16, -16, 32, 32)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1307707009]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0, 1, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1040232742]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

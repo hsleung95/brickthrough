@@ -3,12 +3,15 @@ extends CharacterBody2D
 @onready var camera := $"../Camera2D"
 
 var BALL_RADIUS := 9.0
+var ballSpeed = 1
+var ballSize = 1
 
 signal ball_removed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	velocity = Vector2(100.0, 150.0)
+	velocity = Vector2(100 * ballSpeed, 150 * ballSpeed)
+	scale = Vector2(ballSize, ballSize)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +24,7 @@ func _process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal())
 		var collider = collision.get_collider()
 		if (collider.is_in_group("Hittable")):
-			collider.call("on_hit")
+			collider.call("on_hit", collision.get_position())
 	# 2) Camera-rect "walls" (after movement)
 	var cam_rect: Rect2 = camera.get_world_rect()
 
@@ -35,7 +38,7 @@ func _process(delta: float) -> void:
 		velocity.x = -velocity.x
 
 	# Top wall
-	if global_position.y - BALL_RADIUS < cam_rect.position.y + 64 / camera.zoom.x:
+	if global_position.y - BALL_RADIUS < cam_rect.position.y + 48 / camera.zoom.x:
 		velocity.y = -velocity.y
 
 	# Bottom: lose ball
@@ -44,7 +47,20 @@ func _process(delta: float) -> void:
 		ball_removed.emit()
 		queue_free()
 
+func reset() -> void:
+	ballSize = 1
+	ballSpeed = 1
+	
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	ball_removed.emit()
 	queue_free()
+
+func updateSpeed(newSpeed: float) -> void:
+	ballSpeed = newSpeed
+	velocity = Vector2(100 * ballSpeed, 150 * ballSpeed)
+
+func updateSize(newSize: float) -> void:
+	var newScale = max(newSize, 0.05)
+	ballSize = newScale
+	scale = Vector2(ballSize, ballSize)

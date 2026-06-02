@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b23i2xolx8j4h" path="res://paddle.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://ball.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://jk8016pg0cg1" path="res://brick.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c6rwnk1vlewlp" path="res://power_up.tscn" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://d256wdy5pe248" path="res://camera_2d.gd" id="4_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
@@ -15,6 +16,7 @@ size = Vector2(722, 120)
 script = ExtResource("1_h2yge")
 ball_scene = ExtResource("2_0xm2m")
 brick_scene = ExtResource("4_1bvp3")
+power_up_scene = ExtResource("4_7mycd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=965200988]
 position = Vector2(360, 272)
@@ -64,8 +66,8 @@ horizontal_alignment = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0070001
-offset_left = 320.0
-offset_right = -336.0
+offset_left = 128.0
+offset_right = -104.0
 offset_bottom = -509.78003
 grow_horizontal = 2
 size_flags_horizontal = 4

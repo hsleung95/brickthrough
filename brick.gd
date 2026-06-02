@@ -9,9 +9,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:	
 	move_and_collide(Vector2(0,0.25))
 	
-func on_hit() -> void:
-	destroy_block()	
+func on_hit(_position: Vector2) -> void:
+	destroy_block(_position)	
 
-func destroy_block():
-	block_destroyed.emit()
+func destroy_block(destroyedPosition: Vector2) -> void:
+	block_destroyed.emit(destroyedPosition)
 	queue_free()

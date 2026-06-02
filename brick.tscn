@@ -11,7 +11,6 @@ size = Vector2(80, 16)
 size = Vector2(0.7843137, 0.7272727)
 
 [node name="Brick" type="RigidBody2D" unique_id=1587032899 groups=["Bricks"]]
-collision_layer = 2
 collision_mask = 4
 collision_priority = 9.0
 script = ExtResource("1_awxk8")
