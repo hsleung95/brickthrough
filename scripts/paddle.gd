@@ -21,9 +21,6 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Balls")):
 		ball_hit.emit()
-	elif (body.is_in_group("PowerUps")):
-		print("power up hit")
-		body.getPowerUp()
 
 func reset() -> void:
 	scale.x = 1

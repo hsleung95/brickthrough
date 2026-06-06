@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 	if collision:
 		# Reflect velocity around the collision normal
 		# You can scale the result to add energy loss (e.g., * 0.8)
+		$HitSound.play()
 		velocity = velocity.bounce(collision.get_normal())
 		var collider = collision.get_collider()
 		if (collider.is_in_group("Hittable")):
@@ -30,15 +31,18 @@ func _process(delta: float) -> void:
 
 	# Left wall
 	if global_position.x - BALL_RADIUS < cam_rect.position.x:
+		$HitSound.play()
 		velocity.x = -velocity.x
 
 	# Right wall
 	var right = cam_rect.position.x + cam_rect.size.x
 	if global_position.x + BALL_RADIUS > right:
+		$HitSound.play()
 		velocity.x = -velocity.x
 
 	# Top wall
 	if global_position.y - BALL_RADIUS < cam_rect.position.y + 48 / camera.zoom.x:
+		$HitSound.play()
 		velocity.y = -velocity.y
 
 	# Bottom: lose ball

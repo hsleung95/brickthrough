@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://jk8016pg0cg1" path="res://brick.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c6rwnk1vlewlp" path="res://power_up.tscn" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://d256wdy5pe248" path="res://scripts/camera_2d.gd" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://518ohqggvobk" path="res://sfx_ssad/sfx_ray.ogg" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://bqi043ti8stmf" path="res://sfx_ssad/sfx_resurrect.ogg" id="8_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(722, 120)
+size = Vector2(722, 92)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1bvp3"]
 
@@ -32,7 +34,7 @@ grow_vertical = 2
 color = Color(0, 0, 1, 1)
 
 [node name="Paddle" parent="." unique_id=1343040502 instance=ExtResource("1_ig7tw")]
-position = Vector2(360, 432)
+position = Vector2(360, 448)
 
 [node name="BrickTimer" type="Timer" parent="." unique_id=1043122695]
 wait_time = 10.0
@@ -43,7 +45,7 @@ wait_time = 10.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone" unique_id=1482243681]
-position = Vector2(360, 484)
+position = Vector2(360, 490)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=165833927]
@@ -95,6 +97,12 @@ z_index = -1
 position = Vector2(359.99997, 15.75)
 scale = Vector2(719.99994, 32.5)
 texture = SubResource("CanvasTexture_1bvp3")
+
+[node name="LossSound" type="AudioStreamPlayer" parent="." unique_id=1138997823]
+stream = ExtResource("7_272bh")
+
+[node name="PowerUpSound" type="AudioStreamPlayer" parent="." unique_id=414689544]
+stream = ExtResource("8_5vw27")
 
 [connection signal="timeout" from="BrickTimer" to="." method="_on_brick_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

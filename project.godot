@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Brickthrough"
-run/main_scene="uid://bt2evyic4ajse"
+run/main_scene="uid://b2mhudkd32hei"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://h0jrmefavea3"
 
 [display]
 

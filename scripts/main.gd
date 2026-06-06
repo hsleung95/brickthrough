@@ -88,12 +88,14 @@ func startGame() -> void:
 	$Camera2D.zoom = Vector2(1.5, 1.5)
 
 func remove_ball() -> void:
+	$LossSound.play()
 	updateBallNumber(ball_count - 1)
 	if (ball_count == 0):
 		endGame()
 
 func endGame() -> void:
 	var shouldEnd = true
+	Global.new_max_score(score)
 	if (shouldEnd):
 		$BrickTimer.stop()
 		$GameTimer.stop()
@@ -102,6 +104,7 @@ func endGame() -> void:
 		get_tree().call_group("Bricks", "queue_free")
 		get_tree().call_group("Balls", "queue_free")
 		get_tree().call_group("PowerUps", "queue_free")
+		get_tree().change_scene_to_file("res://menu.tscn")
 
 func _on_dead_zone_area_entered(_area: Area2D) -> void:
 	endGame()
@@ -135,7 +138,7 @@ func updateBallNumber(newBallCount: int) -> void:
 	$GUI/BallNumber.text = "Balls: " + str(newBallCount)
 
 func handlePowerUp(powerUpType: int) -> void:
-
+	$PowerUpSound.play()
 	if (powerUpType == -2):
 		$Paddle.update_size(0.85)
 	elif (powerUpType == -1):

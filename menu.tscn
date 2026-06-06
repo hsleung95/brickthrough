@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b2mhudkd32hei"]
+
+[ext_resource type="Script" uid="uid://cjxt3jbv755ep" path="res://scripts/start_button.gd" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://dvew2dlkekv87" path="res://menu.gd" id="1_ouk20"]
+[ext_resource type="AudioStream" uid="uid://dx6sp545a1ep0" path="res://jingle_45.ogg" id="3_mae5d"]
+
+[node name="Menu" type="Node" unique_id=857807609]
+script = ExtResource("1_ouk20")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1736468638]
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=542477668]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 4.0
+color = Color(0.005971101, 0, 0.999399, 1)
+
+[node name="Title" type="Label" parent="UI" unique_id=399139810]
+offset_left = 136.0
+offset_top = 128.0
+offset_right = 584.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 64
+text = "BrickThrough"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="UI" unique_id=294193447]
+offset_left = 160.0
+offset_top = 392.0
+offset_right = 556.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 32
+text = "Press Any Button to start"
+script = ExtResource("1_lti8b")
+
+[node name="Instruction" type="Label" parent="UI" unique_id=1383949599]
+offset_left = 296.0
+offset_top = 264.0
+offset_right = 400.0
+offset_bottom = 304.0
+text = "Move: A/D or ←/→"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxScore" type="Label" parent="UI" unique_id=466714534]
+offset_left = 320.0
+offset_top = 320.0
+offset_right = 424.0
+offset_bottom = 352.0
+text = "Max Score: 0"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1263565878]
+stream = ExtResource("3_mae5d")
+autoplay = true
