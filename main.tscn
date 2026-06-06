@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://ball.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://jk8016pg0cg1" path="res://brick.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c6rwnk1vlewlp" path="res://power_up.tscn" id="4_7mycd"]
-[ext_resource type="Script" uid="uid://d256wdy5pe248" path="res://camera_2d.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://d256wdy5pe248" path="res://scripts/camera_2d.gd" id="4_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(722, 120)

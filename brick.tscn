@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jk8016pg0cg1"]
 
-[ext_resource type="Script" uid="uid://btcho0lxtdfqs" path="res://brick.gd" id="1_awxk8"]
+[ext_resource type="Script" uid="uid://btcho0lxtdfqs" path="res://scripts/brick.gd" id="1_awxk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkspu"]
 size = Vector2(80, 16)
