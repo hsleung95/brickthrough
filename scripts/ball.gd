@@ -57,8 +57,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func updateSpeed(newSpeed: float) -> void:
+	var currentDirectionX = sign(velocity.x)
+	var currentDirectionY = sign(velocity.y)
 	ballSpeed = newSpeed
-	velocity = Vector2(100 * ballSpeed, 150 * ballSpeed)
+	velocity = Vector2(currentDirectionX * 100 * ballSpeed, currentDirectionY * 150 * ballSpeed)
 
 func updateSize(newSize: float) -> void:
 	var newScale = max(newSize, 0.05)
