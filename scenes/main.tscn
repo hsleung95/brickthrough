@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bqi043ti8stmf" path="res://sfx_ssad/sfx_resurrect.ogg" id="8_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(1080, 111)
+size = Vector2(1080, 56)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1bvp3"]
 
@@ -34,7 +34,7 @@ zoom = Vector2(1.5, 1.5)
 script = ExtResource("4_lquwl")
 
 [node name="Paddle" parent="." unique_id=1343040502 instance=ExtResource("1_ig7tw")]
-position = Vector2(536, 592)
+position = Vector2(536, 608)
 
 [node name="BrickTimer" type="Timer" parent="." unique_id=1043122695]
 wait_time = 10.0
@@ -45,7 +45,7 @@ wait_time = 10.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone" unique_id=1482243681]
-position = Vector2(536, 656.5)
+position = Vector2(536, 684)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=165833927]
@@ -65,13 +65,12 @@ text = "00:00"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="GUI" unique_id=686002272]
-anchors_preset = -1
-anchor_left = 0.363
-anchor_right = 0.68100005
-anchor_bottom = 0.093
-offset_left = -0.040008545
-offset_right = 0.5199585
-offset_bottom = -357.48
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -356.0
+offset_right = 356.0
+offset_bottom = 67.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
