@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c6rwnk1vlewlp"]
 
+[ext_resource type="Texture2D" uid="uid://1gw7bdc8knfl" path="res://icons/ball_num.png" id="2_ig136"]
 [ext_resource type="Script" uid="uid://bmjlox07w1xpt" path="res://scripts/power_up.gd" id="2_mkoic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fad3"]
@@ -43,5 +44,10 @@ theme_override_font_sizes/font_size = 12
 text = "+1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="icon" type="Sprite2D" parent="." unique_id=390988982]
+position = Vector2(0, -3.8146973e-06)
+scale = Vector2(0.107744105, 0.11228071)
+texture = ExtResource("2_ig136")
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

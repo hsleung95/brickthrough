@@ -3,25 +3,32 @@ extends RigidBody2D
 signal powerUpTriggered
 var powerUpType;
 
+const ICON_BALL_NUM = preload("res://icons/ball_num.png")
+const ICON_BALL_SIZE_DECREASE = preload("res://icons/ball_size_decrease.png")
+const ICON_BALL_SIZE_INCREASE = preload("res://icons/ball_size_increase.png")
+const ICON_BALL_SPEED_INCREASE = preload("res://icons/ball_speed_increase.png")
+const ICON_PADDLE_SIZE_DECREASE = preload("res://icons/paddle_size_decrease.png")
+const ICON_PADDLE_SIZE_INCREASE = preload("res://icons/paddle_size_increase.png")
+const ICON_PADDLE_SPEED_INCREASE = preload("res://icons/paddle_speed_increase.png")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	powerUpType = randi_range(-2,4)
-	if (powerUpType < 0):
-		$ColorRect.color = Color(255,0,0)
 	if (powerUpType == -2):
 		$Label.text = "PL"
+		$icon.texture = ICON_PADDLE_SIZE_DECREASE
 	elif (powerUpType == -1):
-		$Label.text = "BS"
+		$icon.texture = ICON_BALL_SIZE_DECREASE
 	elif (powerUpType == 0):
-		$Label.text = "PS"
+		$icon.texture = ICON_PADDLE_SPEED_INCREASE
 	elif (powerUpType == 1):
-		$Label.text = "PL"
+		$icon.texture = ICON_PADDLE_SIZE_INCREASE
 	elif (powerUpType == 2):
-		$Label.text = "+1"
+		$icon.texture = ICON_BALL_NUM
 	elif (powerUpType == 3):
-		$Label.text = "BP"
+		$icon.texture = ICON_BALL_SPEED_INCREASE
 	else:
-		$Label.text = "BZ"
+		$icon.texture = ICON_BALL_SIZE_INCREASE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
