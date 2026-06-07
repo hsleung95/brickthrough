@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var camera := $"../Camera2D"
 
+const INIT_BALL_SPEED_X = 200
+const INIT_BALL_SPEED_Y = 250
 var BALL_RADIUS := 9.0
 var ballSpeed = 1
 var ballSize = 1
@@ -10,7 +12,7 @@ signal ball_removed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	velocity = Vector2(100 * ballSpeed, 150 * ballSpeed)
+	velocity = Vector2(INIT_BALL_SPEED_X * ballSpeed, INIT_BALL_SPEED_Y * ballSpeed)
 	scale = Vector2(ballSize, ballSize)
 
 
@@ -63,8 +65,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func updateSpeed(newSpeed: float) -> void:
 	var currentDirectionX = sign(velocity.x)
 	var currentDirectionY = sign(velocity.y)
-	ballSpeed = newSpeed
-	velocity = Vector2(currentDirectionX * 100 * ballSpeed, currentDirectionY * 150 * ballSpeed)
+	ballSpeed = abs(newSpeed)
+	velocity = Vector2(currentDirectionX * INIT_BALL_SPEED_X * ballSpeed, currentDirectionY * INIT_BALL_SPEED_Y * ballSpeed)
 
 func updateSize(newSize: float) -> void:
 	var newScale = max(newSize, 0.05)

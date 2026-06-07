@@ -21,8 +21,8 @@ Global="*uid://h0jrmefavea3"
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=540
+window/size/viewport_width=1080
+window/size/viewport_height=720
 
 [dotnet]
 

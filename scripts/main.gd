@@ -5,7 +5,7 @@ extends Node
 @export var power_up_scene: PackedScene
 var score
 var increaseSpeedPeriod = 10
-var zoom_out_rate = 0.00025
+var zoom_out_rate = 0.0005
 var power_up_prob = 1
 var ball_count = 0
 var is_game_over = false
@@ -52,7 +52,7 @@ func spawnBricks() -> void:
 	for i in range(block_num):
 		var brick = brick_scene.instantiate()
 		brick.name = "brick" + str(i)
-		brick.position = Vector2(100 + 100 * i, 64)
+		brick.position = Vector2(180 + 150 * i, 128)
 		brick.block_destroyed.connect(increaseScore)
 		brick.block_destroyed.connect(spawnPowerUp)
 		brick.add_to_group("Hittable")
@@ -104,7 +104,7 @@ func endGame() -> void:
 		get_tree().call_group("Bricks", "queue_free")
 		get_tree().call_group("Balls", "queue_free")
 		get_tree().call_group("PowerUps", "queue_free")
-		get_tree().change_scene_to_file("res://menu.tscn")
+		get_tree().change_scene_to_file.bind("res://scenes/menu.tscn").call_deferred()
 
 func _on_dead_zone_area_entered(_area: Area2D) -> void:
 	endGame()

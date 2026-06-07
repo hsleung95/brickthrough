@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bt2evyic4ajse"]
+
+[ext_resource type="Script" uid="uid://ch2gsynkvki4" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b23i2xolx8j4h" path="res://scenes/paddle.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://ck83jqdu2xlia" path="res://scenes/ball.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://jk8016pg0cg1" path="res://scenes/brick.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c6rwnk1vlewlp" path="res://scenes/power_up.tscn" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://d256wdy5pe248" path="res://scripts/camera_2d.gd" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://518ohqggvobk" path="res://sfx_ssad/sfx_ray.ogg" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://bqi043ti8stmf" path="res://sfx_ssad/sfx_resurrect.ogg" id="8_5vw27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1080, 111)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1bvp3"]
+
+[node name="Main" type="Node" unique_id=1037638979]
+script = ExtResource("1_h2yge")
+ball_scene = ExtResource("2_0xm2m")
+brick_scene = ExtResource("4_1bvp3")
+power_up_scene = ExtResource("4_7mycd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1362906488]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=965200988]
+position = Vector2(544, 384)
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("4_lquwl")
+
+[node name="Paddle" parent="." unique_id=1343040502 instance=ExtResource("1_ig7tw")]
+position = Vector2(536, 592)
+
+[node name="BrickTimer" type="Timer" parent="." unique_id=1043122695]
+wait_time = 10.0
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1536577119]
+
+[node name="DeadZone" type="Area2D" parent="." unique_id=394575813]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone" unique_id=1482243681]
+position = Vector2(536, 656.5)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=165833927]
+
+[node name="TimeLived" type="Label" parent="GUI" unique_id=1542633715]
+anchors_preset = -1
+anchor_left = 0.86700004
+anchor_right = 0.99700004
+anchor_bottom = 0.063
+offset_left = -0.23999023
+offset_right = 0.16003418
+offset_bottom = -1.0400009
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="GUI" unique_id=686002272]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0070001
+offset_left = 392.0
+offset_right = -344.0
+offset_bottom = -1015.56006
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BallNumber" type="Label" parent="GUI" unique_id=1161443377]
+anchors_preset = -1
+anchor_right = 0.178
+anchor_bottom = 0.074
+offset_right = -0.16000366
+offset_bottom = -12.919998
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Balls: 0"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="GUI" unique_id=532102466]
+z_index = -1
+position = Vector2(540, 27.75)
+scale = Vector2(1080.0001, 56.5)
+texture = SubResource("CanvasTexture_1bvp3")
+
+[node name="LossSound" type="AudioStreamPlayer" parent="." unique_id=1138997823]
+stream = ExtResource("7_272bh")
+
+[node name="PowerUpSound" type="AudioStreamPlayer" parent="." unique_id=414689544]
+stream = ExtResource("8_5vw27")
+
+[connection signal="timeout" from="BrickTimer" to="." method="_on_brick_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="area_entered" from="DeadZone" to="." method="_on_dead_zone_area_entered"]

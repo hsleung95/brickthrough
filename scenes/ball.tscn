@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ck83jqdu2xlia"]
+
+[ext_resource type="Script" uid="uid://x6raaxxquglt" path="res://scripts/ball.gd" id="1_x8fbi"]
+[ext_resource type="AudioStream" uid="uid://7rcngpsrigbk" path="res://sfx_ssad/sfx_death.ogg" id="2_41u45"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbx31"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_cbx31"]
+
+[node name="Ball" type="CharacterBody2D" unique_id=303211317 groups=["Balls"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_x8fbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123247601]
+shape = SubResource("CircleShape2D_cbx31")
+debug_color = Color(0.8903827, 0.1718834, 0, 0.41960785)
+
+[node name="Sprite2D" type="MeshInstance2D" parent="." unique_id=1669309768]
+position = Vector2(1.0728836e-06, 3.3974648e-06)
+scale = Vector2(20.02268, 20.000004)
+mesh = SubResource("SphereMesh_cbx31")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1305747442]
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1479825283]
+stream = ExtResource("2_41u45")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -5,7 +5,7 @@ signal ball_hit
 @onready var camera := $"../Camera2D"
 @export var speed: float = 500.0
 @export var left_limit: float = 50.0
-@export var right_limit: float = 670.0
+@export var right_limit: float = 1870.0
 
 func _ready() -> void:
 	pass

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b23i2xolx8j4h"]
+
+[ext_resource type="Script" uid="uid://ca4evdogolhvk" path="res://scripts/paddle.gd" id="1_0sbc1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut3sq"]
+size = Vector2(192, 16)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0sbc1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sbc1"]
+size = Vector2(1.8823528, 0.7272726)
+
+[node name="Paddle" type="AnimatableBody2D" unique_id=389395419]
+collision_layer = 2
+collision_mask = 8
+sync_to_physics = false
+script = ExtResource("1_0sbc1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=893589435]
+shape = SubResource("RectangleShape2D_ut3sq")
+debug_color = Color(0.9607843, 0, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=445990652]
+position = Vector2(1.9073486e-06, -5.9604645e-07)
+scale = Vector2(192.00002, 15.999999)
+texture = SubResource("CanvasTexture_0sbc1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1982047654]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1661753000]
+position = Vector2(0, 3.5762787e-07)
+scale = Vector2(102, 22)
+shape = SubResource("RectangleShape2D_0sbc1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

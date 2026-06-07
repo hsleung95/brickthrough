@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://jk8016pg0cg1"]
+
+[ext_resource type="Script" uid="uid://btcho0lxtdfqs" path="res://scripts/brick.gd" id="1_awxk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkspu"]
+size = Vector2(112, 16)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_awxk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awxk8"]
+size = Vector2(1.0980392, 0.7272727)
+
+[node name="Brick" type="RigidBody2D" unique_id=1587032899 groups=["Bricks"]]
+collision_mask = 4
+collision_priority = 9.0
+script = ExtResource("1_awxk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1630169563]
+shape = SubResource("RectangleShape2D_nkspu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=144326805]
+position = Vector2(-3.5762787e-06, 0)
+scale = Vector2(112, 16)
+texture = SubResource("CanvasTexture_awxk8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1358020308]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1681142129]
+position = Vector2(2.3841858e-07, 4.7683716e-07)
+scale = Vector2(102, 22)
+shape = SubResource("RectangleShape2D_awxk8")
