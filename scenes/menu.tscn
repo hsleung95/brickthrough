@@ -31,10 +31,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="UI" unique_id=294193447]
-offset_left = 336.0
-offset_top = 520.0
-offset_right = 732.0
-offset_bottom = 573.0
+anchors_preset = -1
+anchor_left = 0.31100002
+anchor_top = 0.72200006
+anchor_right = 0.67800003
+anchor_bottom = 0.79600006
+offset_left = 0.1199646
+offset_top = 0.15997314
+offset_right = -0.24005127
+offset_bottom = -0.12005615
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Press Any Button to start"
 script = ExtResource("2_mhnvy")

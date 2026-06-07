@@ -66,11 +66,12 @@ horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="GUI" unique_id=686002272]
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0070001
-offset_left = 392.0
-offset_right = -344.0
-offset_bottom = -1015.56006
+anchor_left = 0.363
+anchor_right = 0.68100005
+anchor_bottom = 0.093
+offset_left = -0.040008545
+offset_right = 0.5199585
+offset_bottom = -357.48
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
