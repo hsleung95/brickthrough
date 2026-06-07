@@ -5,7 +5,7 @@ extends Node
 @export var power_up_scene: PackedScene
 var score
 var increaseSpeedPeriod = 10
-var zoom_out_rate = 0.0005
+var zoom_out_rate = 0.0000625
 var power_up_prob = 1
 var ball_count = 0
 var is_game_over = false

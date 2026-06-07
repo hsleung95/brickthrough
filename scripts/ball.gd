@@ -66,7 +66,7 @@ func updateSpeed(newSpeed: float) -> void:
 	var currentDirectionX = sign(velocity.x)
 	var currentDirectionY = sign(velocity.y)
 	ballSpeed = abs(newSpeed)
-	velocity = Vector2(currentDirectionX * INIT_BALL_SPEED_X * ballSpeed, currentDirectionY * INIT_BALL_SPEED_Y * ballSpeed)
+	velocity = Vector2(currentDirectionX * velocity.x * ballSpeed, currentDirectionY * velocity.y * ballSpeed)
 
 func updateSize(newSize: float) -> void:
 	var newScale = max(newSize, 0.05)
